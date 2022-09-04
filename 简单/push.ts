@@ -1,22 +1,37 @@
 /*
-  3057 - Push
+  3060 - Unshift
   -------
-  by jiangshan (@jiangshanmeta) #简单 #array
+  by jiangshan (@jiangshanmeta) #easy #array
 
-  ### 题目
+  ### Question
 
-  在类型系统里实现通用的 ```Array.push``` 。
+  Implement the type version of ```Array.unshift```
 
-  例如：
+  For example:
 
   ```typescript
-  type Result = Push<[1, 2], '3'> // [1, 2, '3']
+  type Result = Unshift<[1, 2], 0> // [0, 1, 2,]
   ```
 
-  > 在 Github 上查看：https://tsch.js.org/3057/zh-CN
+  > View on GitHub: https://tsch.js.org/3060
 */
 
-/* _____________ 你的代码 _____________ */
+/* _____________ Your Code Here _____________ */
 
-type Push<T extends unknown[], U> = [...T, U]
-type Result = Push<[1, 2], '3'> // [1, 2, '3']
+type Unshift<T extends unknown[], U> = [U, ...T]
+
+/* _____________ Test Cases _____________ */
+import type { Equal, Expect } from '@type-challenges/utils'
+
+type cases = [
+  Expect<Equal<Unshift<[], 1>, [1]>>,
+  Expect<Equal<Unshift<[1, 2], 0>, [0, 1, 2]>>,
+  Expect<Equal<Unshift<['1', 2, '3'], boolean>, [boolean, '1', 2, '3']>>
+]
+
+/* _____________ Further Steps _____________ */
+/*
+  > Share your solutions: https://tsch.js.org/3060/answer
+  > View solutions: https://tsch.js.org/3060/solutions
+  > More Challenges: https://tsch.js.org
+*/
